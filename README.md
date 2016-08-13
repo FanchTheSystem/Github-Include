@@ -1,0 +1,1 @@
+If you use it, you should change the $gituser variable in the script
