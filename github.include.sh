@@ -1,4 +1,6 @@
 
+gituser="FanchTheSystem"
+
 github_go () 
 { 
     mkdir -p ~/GITHUB
@@ -31,7 +33,7 @@ github_clone ()
 { 
     github_go
     echo "Clone:" "$1"
-    git clone git@github.com:FanchTheSystem/$1.git
+    git clone git@github.com:${gituser}/$1.git
 }
 
 github_init () 
@@ -44,7 +46,7 @@ github_init ()
     touch README.md
     git add README.md
     git commit -m "First commit"
-    git remote add origin git@github.com:FanchTheSystem/$1.git
+    git remote add origin git@github.com:${gituser}/$1.git
     git remote -v
     git push -u origin master
 }
@@ -59,8 +61,16 @@ github_commit () {
     fi
     echo "Commit:" "$1" "$msg"
     git commit -a -m "$msg"
-    #git push
+    git push -u origin master
 }
+
+github_pull () {
+    github_go "$1"
+    echo "Get Last Version"
+    git pull
+}
+
+
 
 github_add () {
     github_go "$1"
